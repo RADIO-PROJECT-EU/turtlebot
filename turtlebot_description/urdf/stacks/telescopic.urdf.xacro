@@ -69,7 +69,15 @@
         </geometry>
       </collision>
     </link>
-  
+    
+     <joint name="telescopic_camera_joint" type="fixed">
+      <origin xyz="0.0 0.0 0.03" rpy="0 0 0" />
+      <parent link="telescopic_foot_link"/>
+      <child link="telescopic_camera_link" />
+    </joint>
+    
+    <link name="telescopic_camera_link"/>
+    
   </xacro:macro>
   
   <xacro:macro name="stack_bar" params="parent">

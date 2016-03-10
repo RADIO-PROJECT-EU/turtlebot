@@ -26,8 +26,8 @@
   <stack_bar				  	  parent="base_link"/>
   <!--sensor_asus_xtion_pro   		  parent="telescopic_camera_frame"/-->
   <!--sensor_asus_xtion_pro_offset	  		  parent="telescopic_bar_link"/-->
-  <sensor_asus_xtion_pro_live  name="tb" parent="telescopic_link" >
-	<origin xyz="0 0 ${(pos_offset+foot_height)/2}" rpy="0 0 0" />
+  <sensor_asus_xtion_pro_live  name="tb" parent="telescopic_camera_link" >
+	<origin xyz="0 0.021 0" rpy="0 0 0" />
    </sensor_asus_xtion_pro_live>
    
    <sensor_hokuyo_urg04lx name="tb" parent="base_link" >
