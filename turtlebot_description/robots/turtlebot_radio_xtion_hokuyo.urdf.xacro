@@ -1,0 +1,39 @@
+<?xml version="1.0"?><!--
+    - Base      : kobuki
+    - Stacks    : hexagons
+    - Telescopic: telescopic
+    - 3d Sensor : xtion
+    - Laser		: hokuyo
+    
+-->    
+<robot name="turtlebot" xmlns:xacro="http://ros.org/wiki/xacro">
+	
+  <xacro:property name="pos_offset" value="0.661" />
+  <xacro:property name="foot_height" value="0.015" />
+  
+  <!--
+    - Defautl measured positions of telescopic bar (change at you own convenience)
+          pos 1: 0.411
+          pos 2: 0.661
+          pos 3: 0.926
+          pos 4: 1.211   
+-->  
+
+  <xacro:include filename="$(find turtlebot_description)/urdf/turtlebot_library.urdf.xacro" />
+  
+  <kobuki/>
+  <stack_hexagons                 parent="base_link"/>
+  <stack_bar				  	  parent="base_link"/>
+  <!--sensor_asus_xtion_pro   		  parent="telescopic_camera_frame"/-->
+  <!--sensor_asus_xtion_pro_offset	  		  parent="telescopic_bar_link"/-->
+  <sensor_asus_xtion_pro_live  name="tb" parent="telescopic_link" >
+	<origin xyz="0 0 ${(pos_offset+foot_height)/2}" rpy="0 0 0" />
+   </sensor_asus_xtion_pro_live>
+   
+   <sensor_hokuyo_urg04lx name="tb" parent="base_link" >
+		<origin xyz="0.14 0 0.241" rpy="0 0 0" /> 
+   </sensor_hokuyo_urg04lx>
+   
+  <!--sensor_asus_xtion_pro_offset   parent="base_link"/-->
+  <!--sensor_hokuyo   				  parent="base_link"/-->
+</robot>

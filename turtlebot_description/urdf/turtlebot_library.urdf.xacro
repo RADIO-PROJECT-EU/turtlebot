@@ -4,16 +4,20 @@
  -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <!-- General -->
-  <xacro:include filename="$(find turtlebot_description)/urdf/common_properties.urdf.xacro"/>
-  <xacro:include filename="$(find turtlebot_description)/urdf/turtlebot_properties.urdf.xacro"/>
+  <xacro:include filename="$(find turtlebot_description)/urdf/common_properties.urdf.xacro"/>  <!-- materials and colors -->
+  <xacro:include filename="$(find turtlebot_description)/urdf/turtlebot_properties.urdf.xacro"/>  <!-- REP -->
   <!-- Bases -->
-  <xacro:include filename="$(find create_description)/urdf/create.urdf.xacro"/>
-  <xacro:include filename="$(find kobuki_description)/urdf/kobuki.urdf.xacro" />
+  <xacro:include filename="$(find create_description)/urdf/create.urdf.xacro"/>  <!-- create? -->
+  <xacro:include filename="$(find kobuki_description)/urdf/kobuki.urdf.xacro" />  <!-- base kobuki (:D) -->
   <!-- Stacks -->
-  <xacro:include filename="$(find turtlebot_description)/urdf/stacks/circles.urdf.xacro"/>
-  <xacro:include filename="$(find turtlebot_description)/urdf/stacks/hexagons.urdf.xacro"/>
+  <xacro:include filename="$(find turtlebot_description)/urdf/stacks/circles.urdf.xacro"/>  <!-- ? -->
+  <xacro:include filename="$(find turtlebot_description)/urdf/stacks/hexagons.urdf.xacro"/>  <!-- dishes -->
   <!-- 3D Sensors -->
   <xacro:include filename="$(find turtlebot_description)/urdf/sensors/kinect.urdf.xacro"/>
   <xacro:include filename="$(find turtlebot_description)/urdf/sensors/asus_xtion_pro.urdf.xacro"/>
   <xacro:include filename="$(find turtlebot_description)/urdf/sensors/asus_xtion_pro_offset.urdf.xacro"/>
+  <xacro:include filename="$(find turtlebot_description)/urdf/sensors/asus_xtion_pro_live.urdf.xacro"/>
+  <xacro:include filename="$(find turtlebot_description)/urdf/sensors/hokuyo_urg04lx.urdf.xacro" /> 
+  <!-- Telescopic Bar -->
+  <xacro:include filename="$(find turtlebot_description)/urdf/stacks/telescopic.urdf.xacro"/>
 </robot>

@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<robot name="telescopic_bar" xmlns:xacro="http://ros.org/wiki/xacro">
+	
+  <xacro:macro name="stack_telescopic_bar" params="parent h_offset x_loc y_loc z_loc">
+    <joint name="telescopic_base_joint" type="fixed">
+      <origin xyz="${x_loc} ${y_loc} ${z_loc}" rpy="0 0 0" />
+      <parent link="${parent}"/>
+      <child link="telescopic_base_link" />
+    </joint>
+
+    <link name="telescopic_base_link"/>
+        
+    <joint name="telescopic_joint" type="fixed">
+      <origin xyz="0.0 0.0 ${h_offset/2}" rpy="0 0 0" />
+      <parent link="telescopic_base_link"/>
+      <child link="telescopic_link" />
+    </joint>
+
+    <link name="telescopic_link">
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+          iyy="0.0001" iyz="0.0"
+          izz="0.0001" />
+      </inertial>
+
+      <visual>
+        <origin xyz=" 0 0 0.0" rpy="0 0 0" />
+        <geometry>
+           <cylinder length="${h_offset}" radius="0.01"/>
+        </geometry>
+      </visual>
+
+      <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+        <geometry>
+          <cylinder length="${h_offset}" radius="0.01"/>
+        </geometry>
+      </collision>
+    </link>
+    
+    <joint name="telescopic_foot_joint" type="fixed">
+      <origin xyz="0.0 0.0 ${h_offset/2}" rpy="0 0 0" />
+      <parent link="telescopic_link"/>
+      <child link="telescopic_foot_link" />
+    </joint>
+
+    <link name="telescopic_foot_link">
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+          iyy="0.0001" iyz="0.0"
+          izz="0.0001" />
+      </inertial>
+
+      <visual>
+        <origin xyz=" 0 0 0.007" rpy="0 0 0" />
+        <geometry>
+           <cylinder length="${foot_height}" radius="0.015"/>
+        </geometry>
+      </visual>
+
+      <collision>
+        <origin xyz="0.0 0.0 0.007" rpy="0 0 0" />
+        <geometry>
+          <cylinder length="${foot_height}" radius="0.015"/>
+        </geometry>
+      </collision>
+    </link>
+  
+  </xacro:macro>
+  
+  <xacro:macro name="stack_bar" params="parent">
+    <stack_telescopic_bar parent="${parent}" h_offset="${pos_offset}" x_loc= "-0.1" y_loc= "0.0" z_loc="0.19" />
+  </xacro:macro>
+
+</robot>
