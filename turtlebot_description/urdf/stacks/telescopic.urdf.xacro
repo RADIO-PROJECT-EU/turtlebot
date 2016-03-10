@@ -58,14 +58,14 @@
       <visual>
         <origin xyz=" 0 0 0.007" rpy="0 0 0" />
         <geometry>
-           <cylinder length="${foot_height}" radius="0.015"/>
+           <cylinder length="${foot_h}" radius="0.015"/>
         </geometry>
       </visual>
 
       <collision>
         <origin xyz="0.0 0.0 0.007" rpy="0 0 0" />
         <geometry>
-          <cylinder length="${foot_height}" radius="0.015"/>
+          <cylinder length="${foot_h}" radius="0.015"/>
         </geometry>
       </collision>
     </link>
@@ -81,7 +81,7 @@
   </xacro:macro>
   
   <xacro:macro name="stack_bar" params="parent">
-    <stack_telescopic_bar parent="${parent}" h_offset="${pos_offset}" x_loc= "-0.1" y_loc= "0.0" z_loc="0.19" />
+    <stack_telescopic_bar parent="${parent}" h_offset="${camera_h}" x_loc= "-0.1" y_loc= "0.0" z_loc="0.19" />
   </xacro:macro>
 
 </robot>

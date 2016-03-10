@@ -8,15 +8,15 @@
 -->    
 <robot name="turtlebot" xmlns:xacro="http://ros.org/wiki/xacro">
 	
-  <xacro:property name="pos_offset" value="0.661" />
-  <xacro:property name="foot_height" value="0.015" />
+  <xacro:property name="camera_h" value="0.406" />
+  <xacro:property name="foot_h" value="0.015" />
   
   <!--
     - Defautl measured positions of telescopic bar (change at you own convenience)
-          pos 1: 0.411
-          pos 2: 0.661
-          pos 3: 0.926
-          pos 4: 1.211   
+          pos 0: 0.406
+          pos 2: 0.671
+          pos 3: 0.961
+          pos 4: 1.236   
 -->  
 
   <xacro:include filename="$(find turtlebot_description)/urdf/turtlebot_library.urdf.xacro" />
