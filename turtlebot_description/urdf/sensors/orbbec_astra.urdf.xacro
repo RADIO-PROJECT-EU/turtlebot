@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
 <robot name="sensor_orbbec_astra" xmlns:xacro="http://ros.org/wiki/xacro">
   
-  <!-- Xacro properties -->
-  <xacro:property name="M_SCALE" value="1.0"/>
-  
   <!-- RGB sensor - cam -->
   <xacro:property name="orbbec_astra_cam_rel_rgb_px"   value="0.0" />
   <xacro:property name="orbbec_astra_cam_rel_rgb_py"   value="-0.0125" />

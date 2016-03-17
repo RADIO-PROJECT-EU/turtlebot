@@ -11,6 +11,7 @@
   <xacro:property name="camera_h" value="0.406" />
   <xacro:property name="foot_h" value="0.015" />
   
+  
   <!--
     - Defautl measured positions of telescopic bar (change at you own convenience)
           pos 0: 0.406
@@ -28,7 +29,7 @@
   <!--sensor_asus_xtion_pro_offset	  		  parent="telescopic_bar_link"/-->
   <sensor_asus_xtion_pro_live  name="tb" parent="telescopic_camera_link" >
 	<origin xyz="0 0.021 0" rpy="0 0 0" />
-   </sensor_asus_xtion_pro_live>
+  </sensor_asus_xtion_pro_live>
    
    <sensor_hokuyo_urg04lx name="tb" parent="base_link" >
 		<origin xyz="0.137 0 0.241" rpy="0 0 0" /> 
