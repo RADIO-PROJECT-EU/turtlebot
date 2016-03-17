@@ -1,22 +1,26 @@
-<?xml version="1.0"?><!--
+<?xml version="1.0"?>
+<!--
     - Base      : kobuki
     - Stacks    : hexagons
     - Telescopic: telescopic
-    - 3d Sensor : xtion
+    - 3d Sensor : orbbec
     - Laser		: hokuyo
     
 -->    
 <robot name="turtlebot" xmlns:xacro="http://ros.org/wiki/xacro">
 	
-  <xacro:property name="camera_h" value="0.406" />
-  <xacro:property name="foot_h" value="0.015" />
+  <xacro:property name="CAMERA_H" value="0.197" />
+  <xacro:property name="FOOT_H" value="0.02" />
   
-  <!--
-    - Defautl measured positions of telescopic bar (change at you own convenience)
-          pos 0: 0.406
-          pos 2: 0.671
-          pos 3: 0.961
-          pos 4: 1.236   
+<!--
+	- Distance from floot (base_footprint) to top_plate = 0.41 (41 cm)
+	- Distance from base_link to top_plate = 0.3996 (39.96 cm)
+	- Distance from middle plate to top plate = 0.2092 m (20.92 cm)
+    - Distance from top_plate to telescopic_bar foot:
+          pos 1: 0.197 m (19.7 cm)
+          pos 2: 0.457 m (45.7 cm)
+          pos 3: 0.725 m (72.5 cm)
+          pos 4: 0.974 m (97.4 cm)
 -->  
 
   <xacro:include filename="$(find turtlebot_description)/urdf/turtlebot_library.urdf.xacro" />
@@ -24,20 +28,13 @@
   <kobuki/>
   <stack_hexagons                 parent="base_link"/>
   <stack_bar				  	  parent="base_link"/>
-  <!--sensor_asus_xtion_pro   		  parent="telescopic_camera_frame"/-->
-  <!--sensor_asus_xtion_pro_offset	  		  parent="telescopic_bar_link"/-->
-  <!--sensor_asus_xtion_pro_live  name="tb" parent="telescopic_camera_link" >
-	<origin xyz="0 0.021 0" rpy="0 0 0" />
-   </sensor_asus_xtion_pro_live-->
+  
+  <sensor_orbbec_astra name="radio" parent="telescopic_foot_link">
+      <origin xyz="0.02 0.011 ${2*FOOT_H-0.006}" rpy="0 0 0" />
+  </sensor_orbbec_astra>
    
-   <sensor_orbbec_astra name="radio" parent="telescopic_camera_link">
-      <origin xyz="0 0.011 0" rpy="0 0 0" />
-   </sensor_orbbec_astra>
-   
-   <sensor_hokuyo_urg04lx name="radio" parent="base_link" >
+  <sensor_hokuyo_urg04lx name="radio" parent="base_link" >
 		<origin xyz="0.137 0 0.241" rpy="0 0 0" /> 
-   </sensor_hokuyo_urg04lx>
-   
-  <!--sensor_asus_xtion_pro_offset   parent="base_link"/-->
-  <!--sensor_hokuyo   				  parent="base_link"/-->
+  </sensor_hokuyo_urg04lx>
+
 </robot>
