@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<robot name="sensor_microphone_array" xmlns:xacro="http://ros.org/wiki/xacro">
+  
+
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+  <xacro:property name="microphone_size_length" value="0.292" />
+  <xacro:property name="microphone_size_height" value="0.038" />
+  <xacro:property name="microphone_size_width" value="0.06" />
+
+  <xacro:macro name="sensor_microphone_array" params="name parent *origin">
+    
+    <joint name="${name}_microphone_base_joint" type="fixed">
+	  <insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="${name}_microphone_base_frame" />
+    </joint>
+
+    <link name="${name}_microphone_base_frame">
+		
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+          iyy="0.0001" iyz="0.0"
+          izz="0.0001" />
+      </inertial>
+      
+      <visual>
+        <origin xyz=" 0 0 ${microphone_size_height/2}" rpy="0 0 0" />
+        <geometry>
+           <box size="${microphone_size_width} ${microphone_size_length} ${microphone_size_height}"/>
+        </geometry>
+        <material name="gray">
+            <color rgba="0.8 0.8 0.8 1"/>
+        </material>
+      </visual>
+
+      <collision>
+        <origin xyz="0.0 0.0 ${microphone_size_height/2}" rpy="0 0 0" />
+        <geometry>
+           <box size="${microphone_size_width} ${microphone_size_length} ${microphone_size_height}"/>
+        </geometry>
+      </collision>
+      
+    </link>
+
+
+  <!-- RGBD sensor for simulation, same as Kinect -->
+  <sensor_microphone_array_gazebo/>
+  
+  </xacro:macro>
+  
+   <xacro:macro name="sensor_microphone_array_gazebo">
+  
+    <gazebo reference="${name}_microphone_array_base_frame">  
+      
+    </gazebo>
+  </xacro:macro>
+</robot>

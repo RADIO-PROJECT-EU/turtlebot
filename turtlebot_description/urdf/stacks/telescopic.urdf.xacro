@@ -30,6 +30,9 @@
         <geometry>
            <cylinder length="${h_offset}" radius="0.01"/>
         </geometry>
+        <material name="black">
+            <color rgba="0 0 0 1"/>
+        </material>
       </visual>
 
       <collision>
@@ -60,6 +63,9 @@
         <geometry>
            <cylinder length="${foot_h}" radius="0.015"/>
         </geometry>
+         <material name="black">
+            <color rgba="0 0 0 1"/>
+        </material>
       </visual>
 
       <collision>
