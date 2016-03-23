@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<robot name="screen" xmlns:xacro="http://ros.org/wiki/xacro">
+  
+
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+  <xacro:property name="screen_size_length" value="0.188" />
+  <xacro:property name="screen_size_height" value="0.131" />
+  <xacro:property name="screen_size_width" value="0.033" />
+
+  <xacro:macro name="screen" params="name parent *origin">
+    
+    <joint name="${name}_screen_base_joint" type="fixed">
+	  <insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="${name}_screen_base_frame" />
+    </joint>
+
+    <link name="${name}_screen_base_frame">
+		
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+          iyy="0.0001" iyz="0.0"
+          izz="0.0001" />
+      </inertial>
+      
+      <visual>
+        <origin xyz=" 0 0 ${screen_size_height/2}" rpy="0 0 0" />
+        <geometry>
+           <box size="${screen_size_width} ${screen_size_length} ${screen_size_height}"/>
+        </geometry>
+        <material name="gray">
+            <color rgba="0.8 0.8 0.8 1"/>
+        </material>
+      </visual>
+
+      <collision>
+        <origin xyz="0.0 0.0 ${screen_size_height/2}" rpy="0 0 0" />
+        <geometry>
+           <box size="${screen_size_width} ${screen_size_length} ${screen_size_height}"/>
+        </geometry>
+      </collision>
+      
+    </link>
+
+
+  <!-- RGBD sensor for simulation, same as Kinect -->
+  <screen_gazebo/>
+  
+  </xacro:macro>
+  
+   <xacro:macro name="screen_gazebo">
+  
+    <gazebo reference="${name}_screen_base_frame">  
+      
+    </gazebo>
+  </xacro:macro>
+</robot>

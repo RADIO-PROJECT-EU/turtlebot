@@ -21,4 +21,8 @@
   <xacro:include filename="$(find turtlebot_description)/urdf/sensors/orbbec_astra.urdf.xacro"/>
   <!-- Telescopic Bar -->
   <xacro:include filename="$(find turtlebot_description)/urdf/stacks/telescopic.urdf.xacro"/>
+  <!-- Microphone Array -->
+  <xacro:include filename="$(find turtlebot_description)/urdf/sensors/microphone_array.urdf.xacro"/>
+  <!-- Others -->
+  <xacro:include filename="$(find turtlebot_description)/urdf/others/screen.urdf.xacro"/>
 </robot>

@@ -35,6 +35,14 @@
    
   <sensor_hokuyo_urg04lx name="radio" parent="base_link" >
 		<origin xyz="0.137 0 0.241" rpy="0 0 0" /> 
-  </sensor_hokuyo_urg04lx>
+   </sensor_hokuyo_urg04lx>
+   
+   <sensor_microphone_array name="radio" parent="plate_top_link" >
+		<origin xyz="0.08 0 0.005" rpy="0 0 0" /> 
+   </sensor_microphone_array>
+  
+   <!--screen name="radio" parent="plate_top_link" >
+		<origin xyz="-0.03 0 0.05" rpy="0 -0.09 0" /> 
+   </screen-->
 
 </robot>
