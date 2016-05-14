@@ -33,7 +33,7 @@
       <origin xyz="0.02 0.011 ${2*FOOT_H-0.006}" rpy="0 0 0" />
   </sensor_orbbec_astra>
    
-  <sensor_hokuyo_urg04lx name="radio" parent="base_link" >
+  <sensor_hokuyo_urg04lx name="hokuyo" parent="base_link" >
 		<origin xyz="0.137 0 0.241" rpy="0 0 0" /> 
    </sensor_hokuyo_urg04lx>
    
