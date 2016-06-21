@@ -32,6 +32,10 @@
   <sensor_orbbec_astra name="radio" parent="telescopic_foot_link">
       <origin xyz="0.02 0.011 ${2*FOOT_H-0.006}" rpy="0 0 0" />
   </sensor_orbbec_astra>
+  
+  <sensor_logitech_c920 prefix="rear" parent="telescopic_foot_link">
+      <origin xyz="-0.02 0.011 0.049" rpy="0 0 0" />
+  </sensor_logitech_c920>
    
   <sensor_hokuyo_urg04lx name="hokuyo" parent="base_link" >
 		<origin xyz="0.137 0 0.241" rpy="0 0 0" /> 

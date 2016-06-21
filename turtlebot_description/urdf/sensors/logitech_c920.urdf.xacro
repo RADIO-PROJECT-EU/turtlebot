@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<robot name="sensor_logitech_c920" xmlns:xacro="http://ros.org/wiki/xacro">
+  
+  <!-- RGB sensor - cam -->
+  <xacro:property name="logitech_c920_cam_rel_rgb_px"   value="0.0" />
+  <xacro:property name="logitech_c920_cam_rel_rgb_py"   value="-0.0125" />
+  <xacro:property name="logitech_c920_cam_rel_rgb_pz"   value="-0.0150" />
+  <!-- TILT - cam -->
+  <xacro:property name="logitech_c920_cam_tilt_px"   value="0.0" />
+  <xacro:property name="logitech_c920_cam_tilt_py"   value="0.0" />
+  <xacro:property name="logitech_c920_cam_tilt_pz"   value="0.021" />    
+  <xacro:property name="REAR_CAM_TILT_ANGLE"   value="0.0" />    
+  
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+
+  <xacro:macro name="sensor_logitech_c920" params="prefix parent *origin">
+    
+    <joint name="${prefix}_cam_base_joint" type="fixed">
+	  <insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="${prefix}_cam_base_link" />
+    </joint>
+
+    <link name="${prefix}_cam_base_link">
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+          iyy="0.0001" iyz="0.0"
+          izz="0.0001" />
+      </inertial>
+    </link>
+    
+    <joint name="${prefix}_cam_tilt_joint" type="fixed">
+	  <origin xyz="${logitech_c920_cam_tilt_px} ${logitech_c920_cam_tilt_py} ${logitech_c920_cam_tilt_pz}" rpy="${REAR_CAM_TILT_ANGLE} 0 ${M_PI}" />      
+      <parent link="${prefix}_cam_base_link" />
+      <child link="${prefix}_cam_tilt_link" />
+    </joint>
+    
+     <link name="${prefix}_cam_tilt_link">
+     </link>
+
+    <joint name="${prefix}_cam_rgb_joint" type="fixed">
+      <origin xyz="0.0 0.0 0.0075" rpy="0 0 0" />      
+      <parent link="${prefix}_cam_tilt_link" />
+      <child link="${prefix}_cam_rgb_frame" />
+    </joint>
+
+    <link name="${prefix}_cam_rgb_frame">
+    </link>
+    
+    <joint name="${prefix}_cam_rgb_optical_joint" type="fixed">
+      <origin xyz="0.0 0.0 0.0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />      
+      <parent link="${prefix}_cam_rgb_frame" />
+      <child link="${prefix}_cam_rgb_optical_frame" />
+    </joint>
+
+    <link name="${prefix}_cam_rgb_optical_frame">
+    </link>
+   
+  <!-- RGBD sensor for simulation, same as Kinect -->
+  <sensor_logitech_c920_gazebo/>
+  
+  </xacro:macro>
+  
+   <xacro:macro name="sensor_logitech_c920_gazebo">
+     <gazebo reference="${prefix}_cam_rgb_optical_frame">  
+      <sensor type="camera" name="cam">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise is sampled independently per pixel on each frame.
+               That pixel's noise value is added to each of its color
+               channels, which at that point lie in the range [0,1]. -->
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>rrbot/camera1</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera_link</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+    </gazebo>
+  </xacro:macro>
+</robot>
