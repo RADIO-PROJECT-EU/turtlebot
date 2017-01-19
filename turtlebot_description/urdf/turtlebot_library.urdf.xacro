@@ -17,7 +17,8 @@
   <!--xacro:include filename="$(find turtlebot_description)/urdf/sensors/asus_xtion_pro.urdf.xacro"/-->
   <!--xacro:include filename="$(find turtlebot_description)/urdf/sensors/asus_xtion_pro_offset.urdf.xacro"/-->
   <xacro:include filename="$(find turtlebot_description)/urdf/sensors/asus_xtion_pro_live.urdf.xacro"/>
-  <xacro:include filename="$(find turtlebot_description)/urdf/sensors/hokuyo_urg04lx.urdf.xacro" /> 
+  <xacro:include filename="$(find turtlebot_description)/urdf/sensors/hokuyo_urg04lx.urdf.xacro" />
+  <xacro:include filename="$(find turtlebot_description)/urdf/sensors/hokuyo_ust10lx.urdf.xacro" />
   <xacro:include filename="$(find turtlebot_description)/urdf/sensors/orbbec_astra.urdf.xacro"/>
   <!-- Telescopic Bar -->
   <xacro:include filename="$(find turtlebot_description)/urdf/stacks/telescopic.urdf.xacro"/>

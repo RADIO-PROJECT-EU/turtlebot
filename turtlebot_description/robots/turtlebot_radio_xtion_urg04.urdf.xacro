@@ -4,7 +4,7 @@
     - Stacks    : hexagons
     - Telescopic: telescopic
     - 3d Sensor : xtion
-    - Laser		: hokuyo
+    - Laser		: urg04lx
 -->
   
 <robot name="turtlebot" xmlns:xacro="http://ros.org/wiki/xacro">
@@ -32,6 +32,10 @@
   <sensor_asus_xtion_pro_live  name="radio" parent="telescopic_foot_link" >
 	<origin xyz="0.018 0.021 ${2*FOOT_H-0.006}" rpy="0 0 0" />
   </sensor_asus_xtion_pro_live>
+  
+  <sensor_logitech_c920 prefix="rear" parent="telescopic_foot_link">
+      <origin xyz="-0.02 0.011 0.049" rpy="0 0 0" />
+  </sensor_logitech_c920>
    
   <sensor_hokuyo_urg04lx name="hokuyo" parent="base_link" >
 		<origin xyz="0.137 0 0.241" rpy="0 0 0" /> 

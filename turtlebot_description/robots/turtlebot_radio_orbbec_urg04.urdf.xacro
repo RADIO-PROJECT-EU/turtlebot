@@ -4,7 +4,7 @@
     - Stacks    : hexagons
     - Telescopic: telescopic
     - 3d Sensor : orbbec
-    - Laser		: hokuyo
+    - Laser		: urg04lx
     
 -->    
 <robot name="turtlebot" xmlns:xacro="http://ros.org/wiki/xacro">
