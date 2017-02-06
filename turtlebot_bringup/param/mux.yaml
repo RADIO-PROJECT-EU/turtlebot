@@ -10,6 +10,10 @@
 #   short_desc:     Short description (optional)
 
 subscribers:
+  - name:        "Emergency button"
+    topic:       "input/emergency_button"
+    timeout:     0.2
+    priority:    15
   - name:        "Safe reactive controller"
     topic:       "input/safety_controller"
     timeout:     0.2
