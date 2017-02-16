@@ -11,6 +11,8 @@
 	
   <xacro:property name="CAMERA_H" value="0.197" />
   <xacro:property name="FOOT_H" value="0.02" />
+  <xacro:property name="min_angle" value="-2.09" />
+  <xacro:property name="max_angle" value="2.09" />
   
 <!--
 	- Distance from floot (base_footprint) to top_plate = 0.41 (41 cm)
@@ -37,7 +39,7 @@
       <origin xyz="-0.02 0.011 0.049" rpy="0 0 0" />
   </sensor_logitech_c920>
    
-  <sensor_hokuyo_ust10lx name="hokuyo" parent="base_link" >
+  <sensor_hokuyo_ust10lx name="hokuyo" parent="base_link" min_angle="${min_angle}" max_angle="${max_angle}">
 		<origin xyz="0.137 0 0.241" rpy="0 0 0" /> 
    </sensor_hokuyo_ust10lx>
    
