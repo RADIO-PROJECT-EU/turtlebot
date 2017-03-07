@@ -15,9 +15,9 @@
   <xacro:property name="r200_cam_offset_py" value="0.024" />
   <xacro:property name="r200_cam_offset_pz" value="0.005" />
 
-  <xacro:property name="r200_cam_rgb_px" value="0.005"/>
-  <xacro:property name="r200_cam_rgb_py" value="-0.018"/>
-  <xacro:property name="r200_cam_rgb_pz" value="0.013"/>
+  <xacro:property name="r200_cam_rgb_px" value="0.0"/>
+  <xacro:property name="r200_cam_rgb_py" value="-0.047"/>
+  <xacro:property name="r200_cam_rgb_pz" value="0.003"/>
   <xacro:property name="r200_cam_depth_offset" value="0.01"/>
 
 
@@ -32,21 +32,22 @@
     </joint>
     <link name="${name}_cam_link">
       <visual>
-       <origin xyz="0 0 0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
+       <!--origin xyz="0 0 0" rpy="${M_PI/2} 0 ${M_PI/2}"/-->
+       <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-         <mesh filename="package://turtlebot_description/meshes/sensors/r200.dae" />
+         <mesh filename="package://turtlebot_description/meshes/sensors/intel_r200.dae" />
         </geometry>
       </visual>
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
         <geometry>
-          <box size="0.130 0.567 0.118"/>
+          <mesh filename="package://turtlebot_description/meshes/sensors/intel_r200.dae" />
         </geometry>
       </collision>-->
  
       <!-- This inertial field needs doesn't contain reliable data!! -->
      <inertial>
-        <mass value="0.564" />
+        <mass value="0.100" />
         <origin xyz="0 0 0" />
         <inertia ixx="0.003881243" ixy="0.0" ixz="0.0"
                  iyy="0.000498940" iyz="0.0"

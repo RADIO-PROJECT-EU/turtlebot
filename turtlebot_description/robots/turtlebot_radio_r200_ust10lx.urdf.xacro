@@ -29,12 +29,16 @@
   <stack_hexagons                 parent="base_link"/>
   <stack_bar				  	  parent="base_link"/>
   
-  <sensor_r200 name="radio" parent="telescopic_foot_link">
-      <origin xyz="0.02 0.0 ${2*FOOT_H-0.006}" rpy="0 0 0" />
+  <intel_r200_base prefix="radio_" parent="telescopic_foot_link">
+      <origin xyz="0.0 0.0 ${2*FOOT_H-0.006}" rpy="0 0 0" />
+  </intel_r200_base>
+  
+  <sensor_r200 name="radio" parent="radio_r200_base_link">
+      <origin xyz="0.033 0.0 0.0313" rpy="0 0 0" />
   </sensor_r200>
   
-  <sensor_logitech_c920 prefix="rear" parent="telescopic_foot_link">
-      <origin xyz="-0.02 0.011 0.049" rpy="0 0 0" />
+  <sensor_logitech_c920 prefix="rear" parent="radio_r200_base_link">
+      <origin xyz="-0.07 0.0 0.0" rpy="0 0 0" />
   </sensor_logitech_c920>
    
   <sensor_hokuyo_ust10lx name="hokuyo" parent="base_link" >
@@ -42,7 +46,7 @@
    </sensor_hokuyo_ust10lx>
    
    <sensor_microphone_array name="radio" parent="plate_top_link" >
-		<origin xyz="0.1 0 0.006" rpy="0 0 0" /> 
+		<origin xyz="0.05 0 0.006" rpy="0 0 0" /> 
    </sensor_microphone_array>
   
    <!--screen name="radio" parent="plate_top_link" >

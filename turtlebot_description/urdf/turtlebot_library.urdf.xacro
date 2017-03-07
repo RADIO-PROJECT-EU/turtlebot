@@ -25,4 +25,5 @@
   <!-- Others -->
   <xacro:include filename="$(find turtlebot_description)/urdf/others/screen.urdf.xacro"/>
   <xacro:include filename="$(find turtlebot_description)/urdf/sensors/logitech_c920.urdf.xacro"/>
+  <xacro:include filename="$(find turtlebot_description)/urdf/others/intel_r200_base.urdf.xacro"/>
 </robot>

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<robot name="screen" xmlns:xacro="http://ros.org/wiki/xacro">
+  
+
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+
+  <xacro:macro name="intel_r200_base" params="prefix parent *origin">
+    
+    <joint name="${prefix}r200_base_joint" type="fixed">
+	  <insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="${prefix}r200_base_link" />
+    </joint>
+
+    <link name="${prefix}r200_base_link">
+		
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+          iyy="0.0001" iyz="0.0"
+          izz="0.0001" />
+      </inertial>
+      
+      <visual>
+        <origin xyz=" 0 0 0" rpy="0 0 0" />
+        <geometry>
+           <mesh filename="package://turtlebot_description/meshes/others/intel_r200_base.dae" />
+        </geometry>
+      </visual>
+
+      <collision>
+        <origin xyz="0.0 0.0 ${screen_size_height/2}" rpy="0 0 0" />
+        <geometry>
+           <mesh filename="package://turtlebot_description/meshes/others/intel_r200_base.dae" />
+        </geometry>
+      </collision>
+      
+    </link>
+
+
+  <intel_r200_base_gazebo/>
+  
+  </xacro:macro>
+  
+   <xacro:macro name="intel_r200_base_gazebo">
+  
+    <gazebo reference="${prefix}r200_base_link">  
+      
+    </gazebo>
+  </xacro:macro>
+  
+</robot>
