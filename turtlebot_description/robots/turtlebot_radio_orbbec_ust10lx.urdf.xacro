@@ -9,7 +9,7 @@
 -->    
 <robot name="turtlebot" xmlns:xacro="http://ros.org/wiki/xacro">
 	
-  <xacro:property name="CAMERA_H" value="0.197" />
+  <xacro:property name="CAMERA_H" value="0.457" />
   <xacro:property name="FOOT_H" value="0.02" />
   <xacro:property name="min_angle" value="-2.09" />
   <xacro:property name="max_angle" value="2.09" />
