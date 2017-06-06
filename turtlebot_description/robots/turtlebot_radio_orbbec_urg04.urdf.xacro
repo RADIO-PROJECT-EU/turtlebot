@@ -9,7 +9,7 @@
 -->    
 <robot name="turtlebot" xmlns:xacro="http://ros.org/wiki/xacro">
 	
-  <xacro:property name="CAMERA_H" value="0.197" />
+  <xacro:property name="CAMERA_H" value="0.457" />
   <xacro:property name="FOOT_H" value="0.02" />
   
 <!--
@@ -37,7 +37,7 @@
       <origin xyz="-0.02 0.011 0.049" rpy="0 0 0" />
   </sensor_logitech_c920>
    
-  <sensor_hokuyo_urg04lx name="hokuyo" parent="base_link" >
+  <sensor_hokuyo_urg04lx name="hokuyo_base" parent="base_link" >
 		<origin xyz="0.137 0 0.241" rpy="0 0 0" /> 
    </sensor_hokuyo_urg04lx>
    
